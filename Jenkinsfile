@@ -1,26 +1,42 @@
 pipeline {
     agent any
-    
+
+    tools{ 
+        maven "maven3.9.6"
+    }
+
     stages {
-        stage('Build') {
+    
+        stage('clean') {
             steps {
-                // Define build steps here
-                sh 'echo "Building..."'
+                echo 'Started'
+                bat 'mvn clean'
+            }
+        }
+    
+        
+        stage('compile') {
+            steps {
+                echo 'compile'
+                bat 'mvn compile'
             }
         }
         
-        stage('Test') {
+        
+        stage('test') {
             steps {
-                // Define test steps here
-                sh 'echo "Testing..."'
+                echo 'Test'
+                bat 'mvn test'
             }
         }
+
         
-        stage('Deploy') {
+        stage('package') {
             steps {
-                // Define deploy steps here
-                sh 'echo "Deploying..."'
+                echo 'Packaging'
+                bat 'mvn package -DskipTests'
             }
         }
     }
+    
 }
