@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Define build steps here
-                sh 'echo "Building..."'
+                sh 'javac -d build src/*.java'
             }
         }
         
