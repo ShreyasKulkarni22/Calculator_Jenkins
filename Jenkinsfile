@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Define test steps here
-                sh 'echo "Testing..."'
+                sh 'java -cp "build:testng.jar" org.testng.TestNG testng.xml'
             }
         }
         
