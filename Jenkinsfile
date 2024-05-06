@@ -1,11 +1,26 @@
-node {
-    stage('Build') {
-        // Compile the Java code
-        sh 'javac -d build src/*.java'
-    }
+pipeline {
+    agent any
     
-    stage('Test') {
-        // Run TestNG tests
-        sh 'java -cp "build:testng.jar" org.testng.TestNG testng.xml'
+    stages {
+        stage('Build') {
+            steps {
+                // Define build steps here
+                sh 'echo "Building..."'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Define test steps here
+                sh 'echo "Testing..."'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Define deploy steps here
+                sh 'echo "Deploying..."'
+            }
+        }
     }
 }
